@@ -2,10 +2,8 @@
 #include<stdlib.h>
 #define n 5
 int top=-1, stack[5], i, indexN, newElement;
-void peep()
+void peep()                //insert indexN and give new element for change
 {
-    //insert indexN and give new element for change
-
     if(indexN>top)
         printf("\n limit over");
     else
@@ -16,7 +14,6 @@ void peep()
         }
         stack[indexN]=newElement;    
     }
-
 }
 void Push(int val)
 {
@@ -66,10 +63,8 @@ int main()
             case 4:
                 printf("\n Insert index number for peep : ");
                 scanf("%d",&indexN);
-
                 printf("\n Insert your element : ");
                 scanf("%d",&newElement);
-
                 peep();
                 break;
             case 0:
