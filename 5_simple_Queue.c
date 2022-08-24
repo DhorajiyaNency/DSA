@@ -1,84 +1,139 @@
 #include<stdio.h>
 #include<stdlib.h>
-#define n 5
-int top=-1, stack[5], i, indexN, searchElement, l=0, u=5, mid;
-void peep()
+int frontE=-1,rearE=-1,que[5],i,value,max=5;
+void insert()
 {
-    // Find the element //binary search
-    mid=l+u/2;
-    for(i=0; i<n; i++)
-    {
-        if(searchElement==stack[mid])
-        {
-            printf("\n\n Your Element size is %d ",mid);
-        }
-        else if(searchElement>stack[mid])
-        {
-            printf("\n\n Element size is %d",mid+1);   // l=mid+1;
+    if(rearE+1==max)
+        printf("\n Queue is full");
+    else
+        if(frontE==-1&&rearE==-1)  
+        {    
+            que[++rearE]=value;
         }
         else
-        {
-            printf("\n\n Element size is %d",mid-1);
-        }
+            que[++rearE]=value;
+}
+void delete()
+{
+    if(frontE==-1&&rearE==-1)
+        printf("\n\n Not posible to delete Element ");
+    else
+    {    
+        if(frontE==rearE)
+            frontE=rearE=-1;
+        else
+            ++frontE;
     }
-}
-void Push(int val)
-{
-    if(top>n-1)
-        printf("\n overflow");
-    else
-        stack[++top]=val;
-}
-int Pop()
-{
-    int x;
-    if(top<=-1)
-        printf("\n underflow");
-    else
-        x=stack[top--];
-        printf("\n poped element is %d ",x);
 }
 void print()
-{
-    for(int i=0;i<=top;i++)
-    {
-        printf("\n%d",stack[i]);
-    }
+{   
+    if(frontE==-1&&rearE==-1)
+        printf("\n Queue is empty");
+    else
+        for(i=frontE+1;i<=rearE;i++)
+        {
+            printf("\t %d ",que[i]);
+        }
 }
 int main()
 {
-    int ch,val;
-    printf("\n press --> 1 for PUSH, \n press --> 2 for POP, \n press --> 3 for show, \n press --> 4 for peep, \n press --> 0 for EXIT.");
+    int ch;
+    printf("\n press --> 1 for INSERT \n press --> 2 for DELETE \n press --> 3 for Show \n press --> 0 for EXIT.");
     do
     {
-        printf("\n\n Enter choice : ");
+        printf("\n Enter choice : ");
         scanf("%d",&ch);
-
         switch(ch)
         {
-            case 1:                // top>n     // overflow
-                printf("\n Enter value : ");
-                scanf("%d",&val);
-                Push(val);
+            case 1:
+                printf("\n Enter your ELEMENT for insert : ");
+                scanf("%d",&value);
+                printf("\n Inserted element is : %d\n",value);
+                insert();
                 break;
-            case 2:               // top<=-1    // underflow
-                Pop();       
+            case 2:
+                printf("\n deleted queue element is %d ",que[frontE+1]);             
+                delete();
                 break;
             case 3:
                 print();
                 break;
-            case 4:
-                printf("\n Enter your element for search : ");
-                scanf("%d",&searchElement);
-                peep();
-                break; 
             case 0:
-                printf("\n EXIT ALL");
-                exit(0);
+                printf("\n EXIT All");
                 break;
             default:
-                printf("\n wrong choice");
+                printf("\n WRONG CHOICE");
                 break;
         }
-    }while (ch!=0);
+    }while (ch!=0);  
 }
+
+// press --> 1 for INSERT
+//  press --> 2 for DELETE
+//  press --> 3 for Show
+//  press --> 0 for EXIT.
+//  Enter choice : 1
+
+//  Enter your ELEMENT for insert : 44
+
+//  Inserted element is : 44
+
+//  Enter choice : 1
+
+//  Enter your ELEMENT for insert : 55
+
+//  Inserted element is : 55
+
+//  Enter choice : 1
+
+//  Enter your ELEMENT for insert : 66
+
+//  Inserted element is : 66
+
+//  Enter choice : 1
+
+//  Enter your ELEMENT for insert : 77 
+
+//  Inserted element is : 77
+
+//  Enter choice : 1
+
+//  Enter your ELEMENT for insert : 88
+
+//  Inserted element is : 88
+
+//  Enter choice : 3
+//          44      55      66      77      88 
+//  Enter choice : 2
+
+//  deleted queue element is 44
+//  Enter choice : 2
+
+//  deleted queue element is 55
+//  Enter choice : 2
+
+//  deleted queue element is 66
+//  Enter choice : 2
+
+//  deleted queue element is 77
+//  Enter choice : 2
+
+//  deleted queue element is 88
+//  Enter choice : 3
+
+//  Enter choice : 3
+
+//  Enter choice : 2
+
+//  deleted queue element is 0
+//  Enter choice : 2
+
+//  deleted queue element is 44
+
+//  Not posible to delete Element
+//  Enter choice : 3
+
+//  Queue is empty
+//  Enter choice : 0
+
+//  EXIT All
