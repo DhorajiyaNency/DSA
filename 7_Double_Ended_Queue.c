@@ -77,7 +77,7 @@ int main()
                 insert_front();
                 break;
             case 4:
-                printf("\n deleted_front queue element is %d ",que[frontE+1]);      //frontE-1       
+                printf("\n deleted_front queue element is %d ",que[frontE+1]);     
                 delete_Front();
                 break;
             case 9:
