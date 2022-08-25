@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
-int frontE=-1,rearE=-1,que[5],i,value,max=5,front_value;
-void insert_Rear()
+int frontE=-1,rearE=-1,que[5],i,value,max=5,front_value,min=1;
+void insert_Rear()         /// 1-->1
 {
     if(rearE+1==max)
         printf("\n Queue is full");
@@ -13,19 +13,20 @@ void insert_Rear()
         else
             que[++rearE]=value;
 }
-void insert_front()
+
+void insert_front()      ///1-->2   // some error
 {
     if(rearE+1==max)
         printf("\n Queue is full");
+    else if(frontE==-1&&rearE==-1||frontE>max||frontE==0&&rearE==0)
+        printf("\n not possible to insert_first ");
+    else if(frontE>=min&&frontE<=max)    //for(j=max;j>=min;j--)
+        que[frontE--]=front_value;
     else
-        if(frontE==-1&&rearE==-1)  
-        {    
-            que[--frontE]=value;
-        }
-        else
-            que[--frontE]=value;
+        que[frontE--]=front_value;
 }
-void delete_Rear()
+
+void delete_Rear()      ///2-->1     
 {
         if(frontE==-1&&rearE==-1)
             printf("\n\n Not posible to delete Element ");
@@ -37,7 +38,7 @@ void delete_Rear()
                 --rearE;
         }
 }
-void delete_Front()
+void delete_Front()     ///2-->2
 {
     if(frontE==-1&&rearE==-1)
         printf("\n\n Not posible to delete Element ");
@@ -49,7 +50,6 @@ void delete_Front()
             ++frontE;
     }
 }
-
 void print()
 {   
     if(frontE==-1&&rearE==-1)
@@ -57,15 +57,15 @@ void print()
     else
         for(i=frontE+1;i<=rearE;i++)
         {
-            printf("\t -- %d ",que[i]);
+            printf("\t --> %d ",que[i]);
         }
 }
 int main()
 {
     int ch;
-    printf("\n press --> 1 for INSERT \n press --> 3 for DELETE \n press --> 9 for Show \n press --> 0 for EXIT.");
     do
     {
+        printf("\n press --> 1 for INSERT_REAR \n press --> 2 for DELETE_REAR \n press --> 3 for DELETE_FRONT \n press --> 4 for INSERT_FRONT \n press --> 9 for Show \n press --> 0 for EXIT.");
         printf("\n Enter choice : ");
         scanf("%d",&ch);
         switch(ch)
@@ -73,7 +73,7 @@ int main()
             case 1:
                 printf("\n Enter your ELEMENT for insert_rear : ");
                 scanf("%d",&value);
-                printf("\n Inserted rear element is : %d\n",value);
+                printf("\n Inserted rear element is : %d\n",value);   
                 insert_Rear();
                 break;
             case 2:
@@ -81,7 +81,7 @@ int main()
                 delete_Rear();
                 break;
             case 3:
-                printf("\n deleted_front queue element is %d ",que[frontE-1]);             
+                printf("\n deleted_front queue element is %d ",que[frontE+1]);      
                 delete_Front();
                 break;
             case 4:
@@ -102,73 +102,3 @@ int main()
         }
     }while (ch!=0);  
 }
-
-// press --> 1 for INSERT
-//  press --> 2 for DELETE
-//  press --> 3 for Show
-//  press --> 0 for EXIT.
-//  Enter choice : 1
-
-//  Enter your ELEMENT for insert : 44
-
-//  Inserted element is : 44
-
-//  Enter choice : 1
-
-//  Enter your ELEMENT for insert : 55
-
-//  Inserted element is : 55
-
-//  Enter choice : 1
-
-//  Enter your ELEMENT for insert : 66
-
-//  Inserted element is : 66
-
-//  Enter choice : 1
-
-//  Enter your ELEMENT for insert : 77 
-
-//  Inserted element is : 77
-
-//  Enter choice : 1
-
-//  Enter your ELEMENT for insert : 88
-
-//  Inserted element is : 88
-
-//  Enter choice : 3
-//          44      55      66      77      88 
-//  Enter choice : 2
-
-//  deleted queue element is 44
-//  Enter choice : 2
-
-//  deleted queue element is 55
-//  Enter choice : 2
-
-//  deleted queue element is 66
-//  Enter choice : 2
-
-//  deleted queue element is 77
-//  Enter choice : 2
-
-//  deleted queue element is 88
-//  Enter choice : 3
-
-//  Enter choice : 3
-
-//  Enter choice : 2
-
-//  deleted queue element is 0
-//  Enter choice : 2
-
-//  deleted queue element is 44
-
-//  Not posible to delete Element
-//  Enter choice : 3
-
-//  Queue is empty
-//  Enter choice : 0
-
-//  EXIT All
