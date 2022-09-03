@@ -1,3 +1,6 @@
+// pass the array in function
+// pass the value in function
+
 #include<stdio.h>
 int main()
 {
