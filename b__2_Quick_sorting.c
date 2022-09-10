@@ -76,6 +76,7 @@ int main()
 
 
 /*
+// Quick sort // swaping sapret function
 #include<stdio.h>
 #include<stdlib.h>
 int n,i,j,pivot,temp;
