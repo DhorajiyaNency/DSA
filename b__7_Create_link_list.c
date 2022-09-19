@@ -1,5 +1,5 @@
-// Creating Link List
-// malloc = Use for Memory Allocation
+//  Creating Link List
+//  Malloc = Use for Memory Allocation
 #include<stdio.h>
 #include<stdlib.h>
 struct node
