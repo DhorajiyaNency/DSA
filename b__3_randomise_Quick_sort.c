@@ -1,4 +1,5 @@
-// Rendomize Quick sorting
+//  R E N D O M I Z E   S O R T I N G 
+// rendomize Quick sorting 
 #include<stdio.h>
 #include<stdlib.h>
 int n,i,j,pivot,temp;
@@ -8,40 +9,39 @@ void print(int a[])
     for(int i=0;i<n;i++)
         printf(" %d ",a[i]);
 }
-void swap_func(int temp,int a[])
+int swap_func(int temp,int a[])
 {
     temp=a[pivot];
     a[pivot]=a[j];
     a[j]=temp;
+    return j;
 }
-void partition(int a[], int last, int first)
+int partition(int a[], int last, int first)
 {
     int pivot=a[last];
-    int i=last+1;
+    int i=last;
     int j=first;
     do
     {
-        while (a[i] <= pivot)
-        {
+        printf("\n pivot %d ",pivot);
+        printf("\n i - %d ",a[i]);
+        print(a);
+        while (a[i] <= pivot)     
             i++;
-        }
-
-        while (a[j] > pivot)
-        {
+        while (a[j] > pivot)   
             j--;
-        }
-
         if (i < j)
         {
             temp = a[i];
             a[i] = a[j];
             a[j] = temp;
-           
+            // swap_func(temp,a);
         }
     } while (i < j);
     temp = a[last];
     a[last] = a[j];
     a[j] = temp;
+    return j;
 
 }
 void pivot_index(int a[], int last, int first)
@@ -71,7 +71,7 @@ int main()
     printf("\n Order of sorted Elements : ");
     for ( i = 0; i < n; i++)
     {
-        printf(" %d ",a[i]);
+        printf("--- %d ",a[i]);
     }
     return 0;   
 }
