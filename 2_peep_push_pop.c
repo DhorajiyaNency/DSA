@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #define n 5
 int top=-1, stack[5], i, indexN, newElement;
-void peep()                //insert indexN and give new element for change
+void change_the_value()                //insert indexN and give new element for change
 {
     if(indexN>top)
         printf("\n limit over");
@@ -65,7 +65,7 @@ int main()
                 scanf("%d",&indexN);
                 printf("\n Insert your element : ");
                 scanf("%d",&newElement);
-                peep();
+                change_the_value();
                 break;
             case 0:
                 printf("\n EXIT ALL");
